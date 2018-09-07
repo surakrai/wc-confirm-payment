@@ -13,10 +13,10 @@
  * @package           Woocommerce_Confirm_Payment
  *
  * @wordpress-plugin
- * Plugin Name:       Woocommerce confirm payment
+ * Plugin Name:       WooCommerce confirm payment
  * Plugin URI:        Confirm Payment
  * Description:       This is a short description of what the plugin does. It's displayed in the WordPress admin area.
- * Version:           0.9.1
+ * Version:           0.9.0
  * Author:            Surakrai
  * Author URI:        https://www.surakrai.com/
  * License:           GPL-2.0+
