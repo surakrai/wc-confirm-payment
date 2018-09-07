@@ -56,7 +56,7 @@
         <?php endwhile ?>
 
       <?php } else { ?>
-        <?php esc_html_e( 'No payment found.', 'woocommerce-confirm-payment' ); ?>
+        <tr><td colspan="5"><?php esc_html_e( 'No payment found.', 'woocommerce-confirm-payment' ); ?></td></tr>
       <?php } ?>
     </tbody>
   </table>
