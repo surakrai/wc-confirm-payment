@@ -26,7 +26,7 @@
  do_action( 'woocommerce_email_header', $email_heading, $email ); ?>
 
  <p><?php
-    printf( __( 'Submitted payment. Order number #%s has been cancelled. Due to your payment is not correct.<strong>Please submit your payment again. <a href="%s">Confirm payment</a><strong>', 'woocommerce' ),
+    printf( __( 'Submitted payment. Order number #%s has been cancelled. Due to your payment is not correct.<strong>Please submit your payment again. <a href="%s">Confirm payment</a><strong>', 'woocommerce-confirm-payment' ),
     $order->get_order_number(),
     wcp_get_confirm_payment_url( $order->get_id() )
   );
