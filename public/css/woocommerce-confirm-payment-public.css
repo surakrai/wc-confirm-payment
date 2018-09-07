@@ -76,19 +76,64 @@
 .wcp-form-success-message{
   color: #73af55;
   line-height: 1;
-  white-space: nowrap;
   margin: 0 0 30px;
   padding: 8px 15px;
   background: #f8f8f8;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -ms-flex-align: center;
+  align-items: center;
+}
+.wcp-form-success-message > *{
+  -webkit-flex-basis: 0;
+  -ms-flex-preferred-size: 0;
+  flex-basis: 0;
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+  max-width: 100%;
 }
 .wcp-form-success-message a{
   font-weight: bold;
   color: #73af55;
 }
-.wcp-form-success-message span{
-  display: block;
+.wcp-form-success-message p{
+  margin: 0;
 }
-
+.checkmark{
+  width: 30px;
+  height: 35px;
+  margin-right: 10px;
+  -webkit-box-flex: 0;
+  -webkit-flex: 0 0 30px;
+  -ms-flex: 0 0 30px;
+  flex: 0 0 30px;
+  max-width: 30px;
+}
+.checkmark-path {
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 0;
+}
+.checkmark-path.circle {
+  -webkit-animation: wcp-dash 0.9s ease-in-out;
+  animation: wcp-dash 0.9s ease-in-out;
+}
+.checkmark-path.line {
+  stroke-dashoffset: 1000;
+  -webkit-animation: wcp-dash 0.9s 0.35s ease-in-out forwards;
+  animation: wcp-dash 0.9s 0.35s ease-in-out forwards;
+}
+.checkmark-path.check {
+  stroke-dashoffset: -100;
+  -webkit-animation: wcp-dash-check 0.9s 0.35s ease-in-out forwards;
+  animation: wcp-dash-check 0.9s 0.35s ease-in-out forwards;
+}
 .wcp-account-detail-item{
   display: block;
 }
@@ -192,31 +237,6 @@ img.wcp-slip{
     flex: 0 0 50%;
     max-width: 50%;
   }
-}
-
-.checkmark{
-  width: 30px;
-  display: inline-block;
-  vertical-align: middle;
-  margin-right: 10px;
-}
-.checkmark-path {
-  stroke-dasharray: 1000;
-  stroke-dashoffset: 0;
-}
-.checkmark-path.circle {
-  -webkit-animation: wcp-dash 0.9s ease-in-out;
-  animation: wcp-dash 0.9s ease-in-out;
-}
-.checkmark-path.line {
-  stroke-dashoffset: 1000;
-  -webkit-animation: wcp-dash 0.9s 0.35s ease-in-out forwards;
-  animation: wcp-dash 0.9s 0.35s ease-in-out forwards;
-}
-.checkmark-path.check {
-  stroke-dashoffset: -100;
-  -webkit-animation: wcp-dash-check 0.9s 0.35s ease-in-out forwards;
-  animation: wcp-dash-check 0.9s 0.35s ease-in-out forwards;
 }
 @-webkit-keyframes wcp-dash {
   0% {

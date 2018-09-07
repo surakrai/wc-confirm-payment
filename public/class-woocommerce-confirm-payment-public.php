@@ -187,6 +187,7 @@ class Woocommerce_Confirm_Payment_Public {
 
     $errors        = array();
     $success       = '';
+    $check_icon    = '';
     $allowed_slip  = array( 'image/jpeg', 'image/gif', 'image/png', 'application/pdf' );
     $name          = sanitize_text_field( $_POST['name'] );
     $phone         = sanitize_text_field( $_POST['phone'] );
@@ -260,9 +261,8 @@ class Woocommerce_Confirm_Payment_Public {
           $this->payment_complete( $post_id );
 
           $check_icon = '<svg class="checkmark" version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 130.2 130.2"><circle class="checkmark-path circle" fill="none" stroke="#73AF55" stroke-width="6" stroke-miterlimit="10" cx="65.1" cy="65.1" r="62.1"/><polyline class="checkmark-path check" fill="none" stroke="#73AF55" stroke-width="6" stroke-linecap="round" stroke-miterlimit="10" points="100.2,40.2 51.5,88.8 29.8,67.5 "/></svg>';
+          $success = sprintf( '<p>%s</p>', __( 'Successfully payment confirmation!', 'woocommerce-confirm-payment' ) );
 
-          $success = $check_icon;
-          $success .= __( 'Successfully payment confirmation!', 'woocommerce-confirm-payment'  );
         }
 
       }
@@ -270,7 +270,7 @@ class Woocommerce_Confirm_Payment_Public {
     }
 
     $response = array(
-      'success' => apply_filters( 'wcp_confirm_payment_success_message', $success, $check_icon ),
+      'success' => apply_filters( 'wcp_confirm_payment_success_message', $check_icon . $success, $success, $check_icon ),
       'errors'  => $errors,
     );
 
