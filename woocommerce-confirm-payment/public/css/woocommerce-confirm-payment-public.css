@@ -1,0 +1,252 @@
+/**
+ * All of the CSS for your public-facing functionality should be
+ * included in this file.
+ */
+.wcp-form{
+  -webkit-transition: opacity .2s;
+  transition: opacity .2s;
+}
+.wcp-form.is-loading{
+  opacity: .7;
+  pointer-events: none;
+}
+.wcp-form-inner{
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  margin-right: -15px;
+  margin-left: -15px;
+}
+.wcp-form-group{
+  position: relative;
+  width: 100%;
+  min-height: 1px;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-bottom: 15px;
+}
+.wcp-form-label{
+  font-weight: bold;
+  display: block;
+  margin-bottom: 5px;
+}
+.wcp-form-group .wcp-form-control{
+  min-width: 100%;
+  line-height: 1;
+  height: 40px;
+  padding: 9px 8px;
+  border: solid 1px #ddd;
+  background: #fff;
+}
+.wcp-form-group.has-error .wcp-form-control{
+
+}
+.wcp-button-confirm{
+  position: relative;
+}
+.wcp-form.is-loading .wcp-button-confirm span{
+  opacity: 0;
+}
+.wcp-form.is-loading .wcp-button-confirm:after{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin: -10px 0 0 -10px;
+  content: " ";
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+  vertical-align: middle;
+  border: 1px solid #fff;
+  border-radius: 50%;
+  z-index: 16;
+  border-top-color: transparent !important;
+  -webkit-animation: wcp-load-spin 450ms infinite linear;
+  animation: wcp-load-spin 450ms infinite linear;
+}
+.wcp-alert{
+  padding: 5px 0;
+  line-height: 1;
+}
+.has-error .wcp-alert{
+  color: red;
+}
+.wcp-form-success-message{
+  color: #73af55;
+  line-height: 1;
+  white-space: nowrap;
+  margin: 0 0 30px;
+  padding: 8px 15px;
+  background: #f8f8f8;
+}
+.wcp-form-success-message a{
+  font-weight: bold;
+  color: #73af55;
+}
+.wcp-form-success-message span{
+  display: block;
+}
+
+.wcp-account-detail-item{
+  display: block;
+}
+.wcp-account-detail-item ul{
+  width: 100%;
+  display: table;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  display: table;
+}
+.wcp-account-detail-item li{
+  display: table-cell;
+  width: 35%;
+  padding-bottom: 5px;
+}
+.wcp-account-detail-item li.wcp-account-bank{
+  width: 45%;
+}
+.wcp-account-detail-item li.wcp-account-bank input{
+  height: auto;
+  margin: 0;
+}
+.wcp-account-detail-item li.wcp-account-number{
+  width: 20%;
+}
+li.wcp-account-bank img{
+  width: 40px;
+  height: 40px;
+  margin: 0 10px;
+  display: inline-block !important;
+  vertical-align: middle;
+}
+
+.wcp-our-bank-title{
+  margin: 15px 0 10px;
+}
+.wcp-our-bank{
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+.wcp-our-bank-item{
+  display: inline-block;
+  margin-right: 5px;
+}
+.wcp-our-bank-item img{
+  position: relative !important;
+  right: 0 !important;
+  left: 0 !important;
+  float: none !important;
+  margin: 0 !important;
+  opacity: 1 !important;
+  max-width: none !important;
+  max-height: none !important;
+  display: block !important;
+  transform: translate(0,0);
+  -webkit-transform: translate(0,0);
+}
+
+img.wcp-slip{
+  margin: 0 !important;
+}
+.wc-bacs-bank-details.bacs_details .bank_logo{
+  list-style: none !important;
+}
+@keyframes wcp-load-spin {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+@-o-keyframes wcp-load-spin {
+  100% {
+    -o-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@-ms-keyframes wcp-load-spin {
+  100% {
+    -ms-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@-webkit-keyframes wcp-load-spin {
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@-moz-keyframes wcp-load-spin {
+  100% {
+    -moz-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@media (min-width: 768px){
+
+  .wcp-col-2{
+    -webkit-box-flex: 0;
+    -ms-flex: 0 0 50%;
+    flex: 0 0 50%;
+    max-width: 50%;
+  }
+}
+
+.checkmark{
+  width: 30px;
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 10px;
+}
+.checkmark-path {
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 0;
+}
+.checkmark-path.circle {
+  -webkit-animation: wcp-dash 0.9s ease-in-out;
+  animation: wcp-dash 0.9s ease-in-out;
+}
+.checkmark-path.line {
+  stroke-dashoffset: 1000;
+  -webkit-animation: wcp-dash 0.9s 0.35s ease-in-out forwards;
+  animation: wcp-dash 0.9s 0.35s ease-in-out forwards;
+}
+.checkmark-path.check {
+  stroke-dashoffset: -100;
+  -webkit-animation: wcp-dash-check 0.9s 0.35s ease-in-out forwards;
+  animation: wcp-dash-check 0.9s 0.35s ease-in-out forwards;
+}
+@-webkit-keyframes wcp-dash {
+  0% {
+    stroke-dashoffset: 1000;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+@keyframes wcp-dash {
+  0% {
+    stroke-dashoffset: 1000;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+@-webkit-keyframes wcp-dash-check {
+  0% {
+    stroke-dashoffset: -100;
+  }
+  100% {
+    stroke-dashoffset: 900;
+  }
+}
+@keyframes wcp-dash-check {
+  0% {
+    stroke-dashoffset: -100;
+  }
+  100% {
+    stroke-dashoffset: 900;
+  }
+}

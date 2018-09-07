@@ -1,0 +1,237 @@
+/**
+ * All of the CSS for your admin-specific functionality should be
+ * included in this file.
+ */
+.wcp-wrap{}
+.wcp-wrap table.form-table input[type=email],
+.wcp-wrap table.form-table input[type=text]{
+  width: 400px;
+  margin: 0;
+  padding: 6px;
+  box-sizing: border-box;
+  vertical-align: top;
+}
+.wcp_input_table_wrapper{
+  overflow-x: auto;
+  display: block;
+  max-width: 800px;
+}
+table.wcp_input_table th{
+  display: table-cell;
+  padding: 10px;
+}
+table.wcp_input_table tfoot th{
+  padding-left: 0;
+}
+table.wcp_input_table th.sort{
+  width: 17px;
+  padding: 0 10px;
+}
+table.wcp_input_table td {
+  display: table-cell;
+  padding: 0;
+  border-right: 1px solid #dfdfdf;
+  border-bottom: 1px solid #dfdfdf;
+  border-top: 0;
+  background: #fff;
+  cursor: default;
+}
+table.wcp_input_table td input[type=text]{
+  width: 100% !important;
+  min-width: 100px;
+  padding: 8px 10px;
+  margin: 0;
+  border: 0;
+  outline: 0;
+  box-shadow: none;
+  background: transparent none;
+}
+table.wcp_input_table tr.is-focus td{
+  background-color: #fefbcc;
+}
+table.wcp_input_table td.sort{
+  cursor: move;
+  font-size: 15px;
+  background: #f9f9f9;
+  text-align: center;
+  vertical-align: middle;
+}
+.wcp-metabox-sortable-placeholder{
+  height: 55px;
+}
+.wcp-upload-image-wrapper{
+  position: relative;
+  text-align: center;
+  padding: 2px 0;
+}
+.wcp-image-preview{
+  width: 50px;
+  height: 50px;
+  margin: 0 auto;
+}
+.wcp-image-preview img{
+  width: 100%;
+  height: 100%;
+}
+.wcp-upload-image-wrapper:hover .wcp-image-preview img{
+  opacity: .2;
+}
+.wcp-button-upload-image{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  color: #23282d;
+  transform: translate(-50%,-50%);
+  -webkit-transform: translate(-50%,-50%);
+  display: none;
+  opacity: 0;
+}
+.wcp-button-remove-image{
+  position: absolute;
+  top: 0;
+  right: 0;
+  font-size: 1em;
+  height: 1em;
+  width: 1em;
+  text-align: center;
+  line-height: 1;
+  color: #fff !important;
+  text-decoration: none;
+  font-weight: normal;
+  border: 0;
+  background: #000;
+  opacity: 0;
+}
+.account-item:not(.ui-sortable-helper) .wcp-upload-image-wrapper.has-logo:hover .wcp-button-remove-image{
+  opacity: .8;
+}
+.wcp-upload-image-wrapper.has-logo:hover .wcp-button-remove-image:hover{
+  opacity: 1;
+}
+.wcp-upload-image-wrapper:not(.has-logo) .wcp-button-upload-image{
+  opacity: 1;
+  display: block;
+}
+.wcp-upload-image-wrapper.has-logo .wcp-button-remove-image{
+  display: block;
+}
+
+
+.column-wcp_slip{
+  position: relative;
+  width: 52px;
+  white-space: nowrap;
+  text-align: center !important;
+}
+td.wcp_slip img{
+  margin: 0;
+  width: auto;
+  height: auto;
+  max-width: 40px;
+  max-height: 40px;
+  vertical-align: middle;
+  border: 1px solid #e5e5e5;
+  border: 1px solid rgba(0,0,0,.07);
+}
+.wcp_slip span{
+  position: absolute;
+  top: 10px;
+  left: 0;
+  right: 0;
+  font-size: 16px;
+}
+.wcp-note h4{
+  margin: 0 0 5px;
+}
+.wcp-note img{
+  max-width: 100%;
+  height: auto;
+  margin-top: 10px;
+}
+
+.order-status.status-checking_payment {
+  background: #c1e8ee;
+  color: #45929f;
+}
+.payment-status{
+  display: -webkit-inline-box;
+  display: inline-flex;
+  line-height: 2.5em;
+  color: #777;
+  background: #e5e5e5;
+  border-radius: 4px;
+  border-bottom: 1px solid rgba(0,0,0,.05);
+  margin: -.25em 0;
+  cursor: inherit!important;
+  white-space: nowrap;
+  max-width: 100%;
+}
+.payment-status > span {
+  margin: 0 1em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.payment-status.status-wcp-pending_confirm{
+  color: #45929f;
+  background: #c1e8ee;
+}
+.payment-status.status-wcp-success{
+  background: #c6e1c6;
+  color: #5b841b;
+}
+.column-wcp_action{
+  width: 70px;
+}
+.widefat .column-wcp_action,
+.widefat #wcp_action{
+  text-align: right;
+}
+.widefat .column-wcp_action a.button{
+  display: block;
+  position: relative;
+  display: inline-block;
+  margin: 2px 0 2px 4px;
+  padding: 0 !important;
+  height: 2em !important;
+  width: 2em !important;
+  overflow: hidden;
+  text-align: center;
+  vertical-align: middle;
+}
+.widefat .column-wcp_action a.button i{
+  line-height: 2em;
+  font-size: 13px;
+}
+.widefat .column-wc_actions a.payment_detail::after{
+  content: "\f546";
+}
+@media only screen and (max-width: 782px){
+  .wcp-wrap table.form-table input[type=email],
+  .wcp-wrap table.form-table input[type=text]{
+    width: 100%;
+  }
+  td.wcp_slip img {
+    min-width: 32px;
+  }
+  .column-wcp_slip{
+    display: none;
+  }
+  .post-type-wcp_confirm_payment .wp-list-table .column-wcp_slip{
+    text-align: left !important;
+    padding-bottom: 0;
+  }
+  .post-type-wcp_confirm_payment .wp-list-table .toggle-row{
+    top: -28px;
+  }
+  .post-type-wcp_confirm_payment .wp-list-table .is-expanded td:not(.hidden){
+    overflow: visible;
+  }
+  #the-list td{
+    clear: both !important;
+    display: block !important;
+    width: auto!important;
+  }
+  .widefat .column-wcp_action, .widefat #wcp_action{
+    text-align: left;
+  }
+}
