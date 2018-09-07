@@ -53,11 +53,6 @@ class Woocommerce_Confirm_Payment_Activator {
 
     update_option( 'wcp_flush_rewrite_rules', 'yes' );
 
-    if ( wcp_get_gateway_bacs() ) {
-      wcp_get_gateway_bacs()->update_option( 'enabled', 'yes' );
-    }
-
-
     $bacs_accounts     = get_option('woocommerce_bacs_accounts');
     $wcp_bank_accounts = get_option('wcp_bank_accounts');
 
