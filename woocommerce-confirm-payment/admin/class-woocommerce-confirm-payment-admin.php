@@ -13,10 +13,12 @@
 /**
  * The admin-specific functionality of the plugin.
  *
+ * Defines the plugin name, version, and two examples hooks for how to
  * enqueue the admin-specific stylesheet and JavaScript.
  *
  * @package    Woocommerce_Confirm_Payment
  * @subpackage Woocommerce_Confirm_Payment/admin
+ * @author     Surakrai  <surakraisam@gmail.com>
  */
 class Woocommerce_Confirm_Payment_Admin {
 
