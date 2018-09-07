@@ -338,7 +338,6 @@ class Woocommerce_Confirm_Payment_Public {
     $slips         = get_the_post_thumbnail_url( $payment_id, 'large' );
     $slips_thumb   = get_the_post_thumbnail_url( $payment_id, 'medium' );
 
-    $message .= PHP_EOL;
     $message .= '<strong>' . __( 'Name', 'woocommerce-confirm-payment' ) . ' :</strong> ' . $name . PHP_EOL;
     $message .= '<strong>' . __( 'Phone', 'woocommerce-confirm-payment' ) . ' :</strong> ' . $phone . PHP_EOL;
     $message .= '<strong>' . __( 'Date', 'woocommerce-confirm-payment' ) . ' :</strong> ' . date_i18n( get_option('date_format') . ' ' . get_option('time_format'), strtotime( $date ) ) . PHP_EOL;
@@ -348,7 +347,7 @@ class Woocommerce_Confirm_Payment_Public {
 
     if ( $this->options['line_notification_enabled'] && $line_notify_token = $this->options['line_notify_token'] ) {
 
-      $this->line_notify( wp_strip_all_tags( $message ), $slips_thumb, $slips, $line_notify_token );
+      $this->line_notify( PHP_EOL . wp_strip_all_tags( $message ), $slips_thumb, $slips, $line_notify_token );
 
     }
 
