@@ -32,6 +32,6 @@ if ( ! empty( $this->bank_accounts ) ) : ?>
       <?php } ?>
       </ul>
     <?php endforeach; ?>
-    <p><?php printf( __( 'After bank transfer, Please confirm your payment here <a href="%s">Confirm payment</a></strong>' ), wcp_get_confirm_payment_url( $order_id ) ); ?></p>
+    <p><?php printf( __( 'After bank transfer, Please confirm your payment here <a href="%s">Confirm payment</a></strong>', 'woocommerce-confirm-payment' ), wcp_get_confirm_payment_url( $order_id ) ); ?></p>
   </section>
 <?php endif;
