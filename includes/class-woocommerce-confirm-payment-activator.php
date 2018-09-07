@@ -36,7 +36,7 @@ class Woocommerce_Confirm_Payment_Activator {
     if ( empty( $option['confirm_page'] ) ) {
 
       $page_id = wp_insert_post( array(
-        'post_title'    => wp_strip_all_tags( __( 'Confirm Payment' ) ),
+        'post_title'    => wp_strip_all_tags( __( 'Confirm Payment', 'woocommerce-confirm-payment' ) ),
         'post_content'  => '[wcp_confirm_payment_form]',
         'post_status'   => 'publish',
         'post_author'   => 1,
