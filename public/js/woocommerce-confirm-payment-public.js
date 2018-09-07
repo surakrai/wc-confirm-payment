@@ -17,7 +17,7 @@
     $('#wcp-amount').val( $('select#wcp-order option:first').data('total') );
   });
 
-  $(document).on('keyup click blur', 'input#wcp-order', function(event) {
+  $(document).on('keyup click', 'input#wcp-order', function(event) {
 
     var $this = $(this);
 
