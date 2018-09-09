@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Woocommerce confirm payment\n"
-"POT-Creation-Date: 2018-09-07 12:04+0700\n"
-"PO-Revision-Date: 2018-09-07 12:05+0700\n"
+"POT-Creation-Date: 2018-09-09 11:11+0700\n"
+"PO-Revision-Date: 2018-09-09 11:17+0700\n"
 "Last-Translator: \n"
 "Language-Team: Surakrai\n"
 "Language: th\n"
@@ -31,9 +31,10 @@ msgstr "อัพโหลด"
 #: admin/class-woocommerce-confirm-payment-admin.php:141
 #: admin/class-woocommerce-confirm-payment-admin.php:142
 #: admin/class-woocommerce-confirm-payment-admin.php:143
-#: public/class-woocommerce-confirm-payment-public.php:178
-#: public/class-woocommerce-confirm-payment-public.php:357
-#: public/class-woocommerce-confirm-payment-public.php:479
+#: admin/class-woocommerce-confirm-payment-admin.php:363
+#: public/class-woocommerce-confirm-payment-public.php:180
+#: public/class-woocommerce-confirm-payment-public.php:363
+#: public/class-woocommerce-confirm-payment-public.php:488
 msgid "Confirm payment"
 msgstr "แจ้งชำระเงิน"
 
@@ -85,7 +86,7 @@ msgid "Cancel <span class=\"count\">(%s)</span>"
 msgstr "ยกเลิก <span class=\"count\">(%s)</span>"
 
 #: admin/class-woocommerce-confirm-payment-admin.php:244
-#: admin/class-woocommerce-confirm-payment-setting.php:145
+#: admin/class-woocommerce-confirm-payment-setting.php:152
 msgid "Confirm Payment Page"
 msgstr "หน้าแจ้งชำระเงิน"
 
@@ -96,7 +97,7 @@ msgid "Slip"
 msgstr "สลิป"
 
 #: admin/class-woocommerce-confirm-payment-admin.php:258
-#: public/class-woocommerce-confirm-payment-public.php:342
+#: public/class-woocommerce-confirm-payment-public.php:348
 #: public/partials/woocommerce-confirm-payment-confirm-form.php:52
 #: public/partials/woocommerce-confirm-payment-email.php:21
 #: templates/emails/email-payment-detail.php:39
@@ -104,7 +105,7 @@ msgid "Name"
 msgstr "ชื่อ"
 
 #: admin/class-woocommerce-confirm-payment-admin.php:259
-#: public/class-woocommerce-confirm-payment-public.php:347
+#: public/class-woocommerce-confirm-payment-public.php:353
 #: public/partials/woocommerce-confirm-payment-confirm-form.php:66
 #: public/partials/woocommerce-confirm-payment-email.php:45
 #: public/partials/woocommerce-confirm-payment-history.php:20
@@ -114,7 +115,7 @@ msgid "Order"
 msgstr "รายการสั่งซื้อ"
 
 #: admin/class-woocommerce-confirm-payment-admin.php:260
-#: public/class-woocommerce-confirm-payment-public.php:346
+#: public/class-woocommerce-confirm-payment-public.php:352
 #: public/partials/woocommerce-confirm-payment-bank-details.php:25
 #: public/partials/woocommerce-confirm-payment-email.php:41
 #: templates/emails/email-payment-detail.php:54
@@ -138,7 +139,7 @@ msgid "Transfer date"
 msgstr "วันที่โอน"
 
 #: admin/class-woocommerce-confirm-payment-admin.php:263
-#: public/class-woocommerce-confirm-payment-public.php:343
+#: public/class-woocommerce-confirm-payment-public.php:349
 #: public/partials/woocommerce-confirm-payment-confirm-form.php:59
 #: public/partials/woocommerce-confirm-payment-email.php:25
 #: templates/emails/email-payment-detail.php:43
@@ -146,7 +147,7 @@ msgid "Phone"
 msgstr "เบอร์โทร"
 
 #: admin/class-woocommerce-confirm-payment-admin.php:264
-#: public/class-woocommerce-confirm-payment-public.php:344
+#: public/class-woocommerce-confirm-payment-public.php:350
 #: public/partials/woocommerce-confirm-payment-email.php:29
 #: templates/emails/email-payment-detail.php:47
 msgid "Date"
@@ -166,24 +167,24 @@ msgstr "จัดการ"
 msgid "Approve"
 msgstr "อนุมัติ"
 
-#: admin/class-woocommerce-confirm-payment-admin.php:364
+#: admin/class-woocommerce-confirm-payment-admin.php:391
 msgid "Select an order"
 msgstr "เลือกรายการสั่งซื้อ"
 
-#: admin/class-woocommerce-confirm-payment-admin.php:431
+#: admin/class-woocommerce-confirm-payment-admin.php:458
 msgid "Processing"
 msgstr ""
 
-#: admin/class-woocommerce-confirm-payment-admin.php:439
+#: admin/class-woocommerce-confirm-payment-admin.php:466
 msgid "View payment detail"
 msgstr "ดูรายละเอียดการชำระเงิน"
 
-#: admin/class-woocommerce-confirm-payment-admin.php:458
+#: admin/class-woocommerce-confirm-payment-admin.php:485
 #: admin/class-woocommerce-confirm-payment-customer-email-completed-payment.php:34
 msgid "Completed payment"
 msgstr "ชำระเงินเสร็จสมบูรณ์"
 
-#: admin/class-woocommerce-confirm-payment-admin.php:468
+#: admin/class-woocommerce-confirm-payment-admin.php:495
 #: admin/class-woocommerce-confirm-payment-customer-email-cancelled-payment.php:34
 #: admin/class-woocommerce-confirm-payment-customer-email-cancelled-payment.php:70
 msgid "Cancelled payment"
@@ -283,31 +284,52 @@ msgid "Confirm Payment Settings"
 msgstr "ตั้งค่าการแจ้งชำระเงิน"
 
 #: admin/class-woocommerce-confirm-payment-setting.php:138
+#: admin/class-woocommerce-confirm-payment-setting.php:180
+msgid "Payment form"
+msgstr "ฟอร์มแจ้งชำระเงิน"
+
+#: admin/class-woocommerce-confirm-payment-setting.php:145
 msgid "Notification"
 msgstr "การแจ้งเตือน"
 
-#: admin/class-woocommerce-confirm-payment-setting.php:153
+#: admin/class-woocommerce-confirm-payment-setting.php:160
 msgid "Bank account"
 msgstr "บัญชีธนาคาร"
 
-#: admin/class-woocommerce-confirm-payment-setting.php:161
+#: admin/class-woocommerce-confirm-payment-setting.php:168
+#: public/partials/woocommerce-confirm-payment-confirm-form.php:129
+#: public/partials/woocommerce-confirm-payment-email.php:50
+#: templates/emails/email-payment-detail.php:63
+msgid "Transfer slip"
+msgstr "หลักฐานการโอน"
+
+#: admin/class-woocommerce-confirm-payment-setting.php:174
+msgid "Enable required field"
+msgstr "ต้องระบุ"
+
+#: admin/class-woocommerce-confirm-payment-setting.php:186
+msgid "Show form on thank you page."
+msgstr "แสดงฟอร์มแจ้งชำระเงินในหน้าขอบคุณ"
+
+#: admin/class-woocommerce-confirm-payment-setting.php:192
 msgid "LINE Notify"
 msgstr "LINE Notify"
 
-#: admin/class-woocommerce-confirm-payment-setting.php:167
+#: admin/class-woocommerce-confirm-payment-setting.php:198
 msgid "Enable this line notification"
 msgstr "เปิดใช้ LINE Notify"
 
-#: admin/class-woocommerce-confirm-payment-setting.php:172
+#: admin/class-woocommerce-confirm-payment-setting.php:203
 msgid "Line Notify Token"
 msgstr "Line Notify Token"
 
-#: admin/class-woocommerce-confirm-payment-setting.php:179
+#: admin/class-woocommerce-confirm-payment-setting.php:210
 #, php-format
 msgid "Generate token <a href=\"%s\" target=\"_blank\">Click here<a>"
 msgstr "สร้าง token <a href=\"%s\" target=\"_blank\">คลิกที่นี่<a>"
 
-#: admin/class-woocommerce-confirm-payment-setting.php:238
+#: admin/class-woocommerce-confirm-payment-setting.php:269
+#: admin/class-woocommerce-confirm-payment-setting.php:279
 #, php-format
 msgid "For email notification settings, %sclick here to senting.%s"
 msgstr "สำหรับการตั้งค่าแจ้งเตือนทางอีเมล %s คลิกที่นี่%s"
@@ -350,67 +372,71 @@ msgstr "แจ้งชำระเงิน"
 msgid "Payment History"
 msgstr "ประวัติการแจ้งชำระเงิน"
 
-#: public/class-woocommerce-confirm-payment-public.php:200
+#: public/class-woocommerce-confirm-payment-public.php:149
+msgid "Maximum upload file size 2 MB."
+msgstr "ขนาดไฟล์อัพโหลดสูงสุด 2 MB"
+
+#: public/class-woocommerce-confirm-payment-public.php:203
 msgid "Enter your name"
 msgstr "กรอกชื่อของคุณ"
 
-#: public/class-woocommerce-confirm-payment-public.php:201
+#: public/class-woocommerce-confirm-payment-public.php:204
 msgid "Enter your phone."
 msgstr "กรอกเบอร์เบอร์โทรของคุณ"
 
-#: public/class-woocommerce-confirm-payment-public.php:202
+#: public/class-woocommerce-confirm-payment-public.php:205
 msgid "Enter transfer date"
 msgstr "กรอกวันที่โอนเงิน"
 
-#: public/class-woocommerce-confirm-payment-public.php:203
+#: public/class-woocommerce-confirm-payment-public.php:206
 msgid "Enter transfer time"
 msgstr "กรอกเวลาที่โอนเงิน"
 
-#: public/class-woocommerce-confirm-payment-public.php:204
+#: public/class-woocommerce-confirm-payment-public.php:207
 msgid "Select bank transfer"
 msgstr "เลือกธนาคารที่โอนเงิน"
 
-#: public/class-woocommerce-confirm-payment-public.php:205
+#: public/class-woocommerce-confirm-payment-public.php:208
 msgid "Enter amount transfer"
 msgstr "กรอกจำนวนเงินที่โอน"
 
-#: public/class-woocommerce-confirm-payment-public.php:208
+#: public/class-woocommerce-confirm-payment-public.php:211
 msgid "Enter order number"
 msgstr "กรอกหมายเลขการสั่งซื้อ"
 
-#: public/class-woocommerce-confirm-payment-public.php:216
+#: public/class-woocommerce-confirm-payment-public.php:219
 msgid "Upload transfer slip"
 msgstr "อัพโหลดหลักฐานการโอน"
 
-#: public/class-woocommerce-confirm-payment-public.php:219
+#: public/class-woocommerce-confirm-payment-public.php:223
 msgid "This file type is not supported. You can only upload jpg, png, gif, pdf files."
 msgstr "ไม่รองรับชนิดของไฟล์นี้ คุณสามารถอัปโหลดไฟล์ jpg, png, gif, pdf เท่านั้น"
 
-#: public/class-woocommerce-confirm-payment-public.php:265
+#: public/class-woocommerce-confirm-payment-public.php:273
 msgid "Successfully payment confirmation!"
 msgstr "การแจ้งการชำระเงินของคุณ ถูกส่งไปยังทางร้านเรียบร้อยแล้ว!"
 
-#: public/class-woocommerce-confirm-payment-public.php:311
+#: public/class-woocommerce-confirm-payment-public.php:318
 msgid "This order has been paid. Please wait for the confirmation from the store."
 msgstr "รายการสั่งซื้อนี้แจ้งชำระเงินแล้ว รอการยืนยันจากร้านค้า"
 
-#: public/class-woocommerce-confirm-payment-public.php:313
+#: public/class-woocommerce-confirm-payment-public.php:320
 msgid "This order has been successfully paid."
 msgstr "รายการสั่งซื้อนี้ชำระเงินเรียบร้อยแล้ว"
 
-#: public/class-woocommerce-confirm-payment-public.php:315
+#: public/class-woocommerce-confirm-payment-public.php:322
 msgid "This order is not in any payment status."
 msgstr "รายการสั่งซื้อนี้ไม่อยู่ในสถานะที่จะต้องชำระเงิน"
 
-#: public/class-woocommerce-confirm-payment-public.php:319
+#: public/class-woocommerce-confirm-payment-public.php:326
 msgid "This order does not require an informed your payment."
 msgstr "รายการสั่งซื้อนี้ไม่ต้องแจ้งชำระเงิน"
 
-#: public/class-woocommerce-confirm-payment-public.php:322
+#: public/class-woocommerce-confirm-payment-public.php:329
 msgid "Order not found"
 msgstr "ไม่มีรายการสั่งซื้อนี้"
 
-#: public/class-woocommerce-confirm-payment-public.php:345
+#: public/class-woocommerce-confirm-payment-public.php:351
 msgid "Amount"
 msgstr "จำนวนเงิน"
 
@@ -446,12 +472,6 @@ msgstr "เวลาที่โอน"
 msgid "hh:mm"
 msgstr "ชช:นน"
 
-#: public/partials/woocommerce-confirm-payment-confirm-form.php:129
-#: public/partials/woocommerce-confirm-payment-email.php:50
-#: templates/emails/email-payment-detail.php:63
-msgid "Transfer slip"
-msgstr "หลักฐานการโอน"
-
 #: public/partials/woocommerce-confirm-payment-confirm-form.php:139
 msgid "Submit"
 msgstr "ส่งข้อมูล"
@@ -459,10 +479,6 @@ msgstr "ส่งข้อมูล"
 #: public/partials/woocommerce-confirm-payment-email.php:33
 msgid "Time"
 msgstr "เวลา"
-
-#: public/partials/woocommerce-confirm-payment-history.php:43
-msgid "no slip"
-msgstr "ไม่มีสลิป"
 
 #: public/partials/woocommerce-confirm-payment-history.php:59
 msgid "No payment found."
@@ -491,9 +507,12 @@ msgstr ""
 msgid "You have received a payment from %s. The payment is as follows:"
 msgstr "คุณได้รับรายการชำระเงินจาก %s โดยมีรายละเอียดแจ้งชำระเงินดั้งนี้ :"
 
-#: templates/emails/email-payment-detail.php:72
+#: templates/emails/email-payment-detail.php:74
 msgid "View details"
 msgstr "ดูรายละเอียด"
+
+#~ msgid "No slip"
+#~ msgstr "ไม่มีสลิป"
 
 #~ msgid "New payment"
 #~ msgstr "มีแจ้งชำระเงิน"

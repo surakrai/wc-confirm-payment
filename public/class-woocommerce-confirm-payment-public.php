@@ -113,7 +113,6 @@ class Woocommerce_Confirm_Payment_Public {
 		 * between the defined hooks and the functions defined in this
 		 * class.
 		 */
-    wp_enqueue_style( $this->plugin_name . '-datetimepicker', plugin_dir_url( __FILE__ ) . 'css/jquery.datetimepicker.css', array(), $this->version, 'all' );
 		wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/woocommerce-confirm-payment-public.css', array(), $this->version, 'all' );
 
 	}
@@ -142,10 +141,13 @@ class Woocommerce_Confirm_Payment_Public {
 		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/woocommerce-confirm-payment-public.js', array( 'jquery' ), $this->version, false );
 
     wp_localize_script( $this->plugin_name, 'WCP', array(
-      'ajaxurl'            => admin_url( 'admin-ajax.php' ),
-      'check_order_nonce'  => wp_create_nonce( 'wcp_check_order_nonce' ),
-      'cleave'             => plugin_dir_url( __FILE__ ) . 'js/cleave.min.js',
-      'current_date'       => current_time( 'd-m-Y' )
+      'ajaxurl'               => admin_url( 'admin-ajax.php' ),
+      'check_order_nonce'     => wp_create_nonce( 'wcp_check_order_nonce' ),
+      'cleave'                => plugin_dir_url( __FILE__ ) . 'js/cleave.min.js',
+      'current_date'          => current_time( 'd-m-Y' ),
+      'i18n'                  => array(
+        'maximum_upload_file' => __( 'Maximum upload file size 2 MB.', 'woocommerce-confirm-payment' )
+      )
     ));
 
 	}
@@ -213,11 +215,12 @@ class Woocommerce_Confirm_Payment_Public {
       }
     }
 
-    if ( ! $slip ){
+    if ( ! $slip && ! empty( $this->options['transfer_slip_required'] ) ){
       $errors['slip'] = __( 'Upload transfer slip', 'woocommerce-confirm-payment' );
-    }else {
-      if ( ! in_array( $slip['type'], $allowed_slip ) )
-        $errors['slip'] = __( 'This file type is not supported. You can only upload jpg, png, gif, pdf files.', 'woocommerce-confirm-payment' );
+    }
+
+    if ( $slip && ! in_array( $slip['type'], $allowed_slip ) ) {
+      $errors['slip'] = __( 'This file type is not supported. You can only upload jpg, png, gif, pdf files.', 'woocommerce-confirm-payment' );
     }
 
     if ( empty( $errors )  ) {
@@ -237,7 +240,7 @@ class Woocommerce_Confirm_Payment_Public {
       update_post_meta( $post_id, '_wcp_payment_user_id', ( is_user_logged_in() ? get_current_user_id() : 'guest' ) );
       update_post_meta( $order_id,'_wcp_order_payment_id', $post_id );
 
-      if ( $post_id != 0 ){
+      if ( $post_id != 0 && $slip ){
 
         if ( !function_exists('wp_generate_attachment_metadata') ){
           require_once(ABSPATH . "wp-admin" . '/includes/image.php');
@@ -258,12 +261,16 @@ class Woocommerce_Confirm_Payment_Public {
           update_post_meta( $post_id,'_thumbnail_id', $attachment_id );
           update_post_meta( $attachment_id,'_wcp_payment_slip', $post_id );
 
-          $this->payment_complete( $post_id );
-
-          $check_icon = '<svg class="checkmark" version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 130.2 130.2"><circle class="checkmark-path circle" fill="none" stroke="#73AF55" stroke-width="6" stroke-miterlimit="10" cx="65.1" cy="65.1" r="62.1"/><polyline class="checkmark-path check" fill="none" stroke="#73AF55" stroke-width="6" stroke-linecap="round" stroke-miterlimit="10" points="100.2,40.2 51.5,88.8 29.8,67.5 "/></svg>';
-          $success = sprintf( '<p>%s</p>', __( 'Successfully payment confirmation!', 'woocommerce-confirm-payment' ) );
-
         }
+
+      }
+
+      if ( empty( $errors ) ) {
+
+        $this->payment_complete( $post_id );
+
+        $check_icon = '<svg class="checkmark" version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 130.2 130.2"><circle class="checkmark-path circle" fill="none" stroke="#73AF55" stroke-width="6" stroke-miterlimit="10" cx="65.1" cy="65.1" r="62.1"/><polyline class="checkmark-path check" fill="none" stroke="#73AF55" stroke-width="6" stroke-linecap="round" stroke-miterlimit="10" points="100.2,40.2 51.5,88.8 29.8,67.5 "/></svg>';
+        $success = sprintf( '<p>%s</p>', __( 'Successfully payment confirmation!', 'woocommerce-confirm-payment' ) );
 
       }
 
@@ -271,7 +278,7 @@ class Woocommerce_Confirm_Payment_Public {
 
     $response = array(
       'success' => apply_filters( 'wcp_confirm_payment_success_message', $check_icon . $success, $success, $check_icon ),
-      'errors'  => $errors,
+      'errors'  => $errors
     );
 
     wp_send_json( $response );
@@ -370,10 +377,13 @@ class Woocommerce_Confirm_Payment_Public {
   public function line_notify( $message, $imageThumbnail, $imageFullsize, $token ){
 
     $queryData = array(
-      'message'         => $message,
-      'imageThumbnail'  => $imageThumbnail,
-      'imageFullsize'   => $imageFullsize,
+      'message'         => $message
     );
+
+    if ( $imageThumbnail ) {
+      $queryData['imageThumbnail'] = $imageThumbnail;
+      $queryData['imageFullsize']  = $imageFullsize;
+    }
 
     $queryData = http_build_query( $queryData, '', '&' );
 

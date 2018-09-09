@@ -32,6 +32,11 @@ if ( ! empty( $this->bank_accounts ) ) : ?>
       <?php } ?>
       </ul>
     <?php endforeach; ?>
-    <p><?php printf( __( 'After bank transfer, Please confirm your payment here <a href="%s">Confirm payment</a></strong>', 'woocommerce-confirm-payment' ), wcp_get_confirm_payment_url( $order_id ) ); ?></p>
+    <?php if( ! empty( $this->options['show_form_on_thankyou_page'] ) ) : ?>
+      <h2 class="wc-bacs-bank-details-heading"><?php esc_html_e( 'Confirm payment', 'woocommerce-confirm-payment' ); ?></h2>
+      <?php echo do_shortcode( '[wcp_confirm_payment_form order_id="'. $order_id .'"]' ); ?>
+    <?php else : ?>
+      <p><?php printf( __( 'After bank transfer, Please confirm your payment here <a href="%s">Confirm payment</a></strong>', 'woocommerce-confirm-payment' ), wcp_get_confirm_payment_url( $order_id ) ); ?></p>
+    <?php endif; ?>
   </section>
 <?php endif;

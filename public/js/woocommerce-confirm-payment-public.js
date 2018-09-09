@@ -13,10 +13,6 @@
 
   });
 
-  $(document).on('ready', function() {
-    $('#wcp-amount').val( $('select#wcp-order option:first').data('total') );
-  });
-
   $(document).on('keyup click', 'input#wcp-order', function(event) {
 
     var $this = $(this);
@@ -42,6 +38,19 @@
 
   });
 
+  $(document).on('change', 'input#wcp-slip', function(event) {
+
+    var group = $(this).closest('.wcp-form-group');
+
+    group.removeClass('has-error').find('.wcp-alert').remove();
+
+    if(this.files[0].size > 2097152){
+       group.addClass('has-error').append(wcp_alert(WCP.i18n.maximum_upload_file));
+       this.value = '';
+    }
+
+  });
+
   $('form.wcp-form').ajaxForm({
 
     dataType: 'json',
@@ -63,6 +72,7 @@
     $('.wcp-form-group').removeClass('has-error');
     $('form.wcp-form').removeClass('is-loading');
 
+    console.log( data.asdasa );
 
     if ( data.errors.length === 0 ) {
 

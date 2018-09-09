@@ -134,6 +134,13 @@ class Woocommerce_Confirm_Payment_Admin_Setting{
     );
 
     add_settings_section(
+      'setting_payment_form',
+      __( 'Payment form', 'woocommerce-confirm-payment' ),
+      '',
+      'wcp-setting-admin-general'
+    );
+
+    add_settings_section(
       'setting_notification',
       __( 'Notification', 'woocommerce-confirm-payment' ),
       array( $this, 'setting_notification_callback' ),
@@ -154,6 +161,30 @@ class Woocommerce_Confirm_Payment_Admin_Setting{
       array( $this, 'bank_accounts_callback' ),
       'wcp-setting-admin-general',
       'setting_general'
+    );
+
+    add_settings_field(
+      'transfer_slip_required',
+      __( 'Transfer slip', 'woocommerce-confirm-payment' ),
+      array( $this, 'checkbox_callback' ),
+      'wcp-setting-admin-general',
+      'setting_payment_form',
+      array(
+        'name'        => 'transfer_slip_required',
+        'description' => __( 'Enable required field', 'woocommerce-confirm-payment' )
+      )
+    );
+
+    add_settings_field(
+      'show_form_on_thankyou_page',
+      __( 'Payment form', 'woocommerce-confirm-payment' ),
+      array( $this, 'checkbox_callback' ),
+      'wcp-setting-admin-general',
+      'setting_payment_form',
+      array(
+        'name'        => 'show_form_on_thankyou_page',
+        'description' => __( 'Show form on thank you page.', 'woocommerce-confirm-payment' )
+      )
     );
 
     add_settings_field(
@@ -228,6 +259,16 @@ class Woocommerce_Confirm_Payment_Admin_Setting{
       isset( $this->options[$args['name']] ) ? esc_attr( $this->options[$args['name']]) : '',
       isset( $args['placeholder'] ) ? $args['placeholder'] : '',
       isset( $args['description'] ) ? '<p class="description">' . $args['description'] . '</p>' : ''
+    );
+
+  }
+
+  public function setting_payment_form_callback($args) {
+
+    printf(
+      __( 'For email notification settings, %sclick here to senting.%s', 'woocommerce-confirm-payment' ),
+      '<a href="admin.php?page=wc-settings&tab=email">',
+      '</a>'
     );
 
   }

@@ -15,6 +15,7 @@
 $customer_orders = array();
 $name            = '';
 $phone           = '';
+$order_id        =  ! empty( $atts['order_id'] ) ? $atts['order_id'] : get_query_var( 'wcp_order_id' );
 
 if ( is_user_logged_in() ) {
 
@@ -65,7 +66,7 @@ if ( is_user_logged_in() ) {
     <div class="wcp-form-group wcp-col-2">
       <label class="wcp-form-label" for="wcp-order"><?php esc_html_e( 'Order', 'woocommerce-confirm-payment' ) ?><span class="required">*</span></label>
       <div class="wcp-form-input">
-        <?php if ( $customer_orders ) : ?>
+        <?php if ( $customer_orders && empty( $atts['order_id'] ) ) : ?>
           <select class="wcp-form-control" id="wcp-order" name="order">
             <?php foreach ( $customer_orders as $customer_order ) :
               $orders = wc_get_order( $customer_order );
@@ -73,23 +74,30 @@ if ( is_user_logged_in() ) {
                 '<option value="%s" data-total="%s" %s>#%s (%s)</option>',
                 $orders->get_id(),
                 $orders->get_total(),
-                selected( get_query_var( 'wcp_order_id' ), $orders->get_id(), false ),
+                selected( $order_id, $orders->get_id(), false ),
                 $orders->get_order_number(),
-                 esc_html_e( 'Total', 'woocommerce-confirm-payment' ) . ' ' . $orders->get_formatted_order_total()
+                 esc_html__( 'Total', 'woocommerce-confirm-payment' ) . ' ' . $orders->get_formatted_order_total()
               );
               endforeach; ?>
           </select>
         <?php else : ?>
-          <input type="number" class="wcp-form-control" id="wcp-order" name="order" value="<?php echo esc_attr( get_query_var( 'wcp_order_id' ) ); ?>">
+          <?php printf(
+            '<input type="number" class="wcp-form-control" id="wcp-order" name="order" %s value="%s">',
+            ! empty( $atts['order_id'] ) ? 'readonly' : '',
+            $order_id
+          ) ?>
         <?php endif; ?>
       </div>
     </div>
 
     <div class="wcp-form-group wcp-col-2">
       <label class="wcp-form-label" for="wcp-amount"><?php esc_html_e( 'Transfer amount', 'woocommerce-confirm-payment' ) ?><span class="required">*</span></label>
-      <input type="number" class="wcp-form-control" id="wcp-amount" name="amount">
+      <?php $orders = wc_get_order( $order_id ) ?>
+      <?php printf(
+        '<input type="number" class="wcp-form-control" id="wcp-amount" name="amount" value="%s">',
+        $orders ? $orders->get_total() : ''
+      ) ?>
     </div>
-
     <div class="wcp-form-group">
       <label class="wcp-form-label"><?php esc_html_e( 'Bank transfer', 'woocommerce-confirm-payment' ) ?><span class="required">*</span></label>
       <div class="wcp-form-input wcp-form-input-radio" id="wcp-bank">
@@ -126,7 +134,7 @@ if ( is_user_logged_in() ) {
     </div>
 
     <div class="wcp-form-group">
-      <label class="wcp-form-label" for="wcp-slip"><?php esc_html_e( 'Transfer slip', 'woocommerce-confirm-payment' ) ?><span class="required">*</span></label>
+      <label class="wcp-form-label" for="wcp-slip"><?php esc_html_e( 'Transfer slip', 'woocommerce-confirm-payment' ) ?><?php if( isset( $this->options['transfer_slip_required'] ) ) echo '<span class="required">*</span>'; ?></label>
       <div class="wcp-form-input">
         <input type="file" id="wcp-slip" name="slip" class="wcp-form-control" accept="image/png, image/jpeg, image/gif, image/gif, application/pdf">
       </div>

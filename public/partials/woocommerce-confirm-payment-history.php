@@ -16,7 +16,7 @@
   <table class="shop_table shop_table_responsive my_account_orders">
     <thead>
       <tr>
-        <th class="payment-slip"><span class="nobr"></span><?php esc_html_e( 'Slip', 'woocommerce-confirm-payment' ) ?></th>
+        <th class="payment-slip" width="80"><span class="nobr"></span><?php esc_html_e( 'Slip', 'woocommerce-confirm-payment' ) ?></th>
         <th class="payment-order"><span class="nobr"></span><?php esc_html_e( 'Order', 'woocommerce-confirm-payment' ) ?></th>
         <th class="payment-amount"><span class="nobr"></span><?php esc_html_e( 'Transfer amount', 'woocommerce-confirm-payment' ) ?></th>
         <th class="payment-date"><span class="nobr"></span><?php esc_html_e( 'Transfer date', 'woocommerce-confirm-payment' ) ?></th>
@@ -40,7 +40,7 @@
                   <?php the_post_thumbnail( array( 50, 50 ), array( 'class' => 'wcp-slip' ) )?>
                 </a>
               <?php }else{ ?>
-                <?php esc_html_e( 'no slip', 'woocommerce-confirm-payment' ); ?>
+                <?php echo esc_html( '-' ); ?>
               <?php } ?>
             </td>
             <td class="payment-order" data-title="<?php esc_attr_e( 'Order', 'woocommerce-confirm-payment' ); ?>">

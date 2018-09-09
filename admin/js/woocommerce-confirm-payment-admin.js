@@ -41,19 +41,6 @@
 
   });
 
-
-  // $( '.wcp_input_table .remove_rows' ).click( function() {
-  //  var $tbody = $( this ).closest( '.wc_input_table' ).find( 'tbody' );
-  //  if ( $tbody.find( 'tr.current' ).length > 0 ) {
-  //    var $current = $tbody.find( 'tr.current' );
-  //    $current.each( function() {
-  //      $( this ).remove();
-  //    });
-  //  }
-  //  return false;
-  // });
-
-
   $(document).on( 'click', '.wcp-remove_rows', function(event){
 
     $('tbody.accounts tr.is-focus').remove();

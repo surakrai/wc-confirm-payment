@@ -158,36 +158,26 @@ class Woocommerce_Confirm_Payment {
 
     $this->loader->add_action( 'admin_menu', $plugin_settings, 'add_plugin_page' );
     $this->loader->add_action( 'admin_init', $plugin_settings, 'page_init' );
-
     $this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
     $this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
     $this->loader->add_action( 'init', $plugin_admin, 'register_post_type' );
-
     $this->loader->add_filter( 'manage_wcp_confirm_payment_posts_columns', $plugin_admin, 'columns' );
     $this->loader->add_action( 'manage_wcp_confirm_payment_posts_custom_column', $plugin_admin, 'columns_display', 10, 2 );
-
     $this->loader->add_action( 'init', $plugin_admin, 'flush_rewrite_rules' );
     $this->loader->add_action( 'display_post_states', $plugin_admin, 'post_states', 10, 2 );
-
     $this->loader->add_action( 'init', $plugin_admin, 'register_order_status' );
     $this->loader->add_filter( 'wc_order_statuses', $plugin_admin, 'add_order_statuses' );
     $this->loader->add_filter( 'post_date_column_status', $plugin_admin, 'post_date_column_status' );
-
     $this->loader->add_action( 'wp_ajax_wcp_mark_payment_status', $plugin_admin, 'mark_payment_status' );
-
+    $this->loader->add_action( 'admin_head', $plugin_admin, 'menu_payment_count' );
     $this->loader->add_filter( 'wc_order_statuses', $plugin_admin, 'add_order_statuses' );
-
     $this->loader->add_action( 'restrict_manage_posts', $plugin_admin, 'filter_payment_field' );
     $this->loader->add_action( 'pre_get_posts', $plugin_admin, 'filter_payment' );
-
     $this->loader->add_filter( 'post_row_actions', $plugin_admin, 'remove_row_actions', 10, 2  );
     $this->loader->add_filter( 'bulk_actions-edit-wcp_confirm_payment', $plugin_admin, 'remove_edit_bulk_actions', 10, 2  );
-
     $this->loader->add_action( 'woocommerce_order_status_checking_payment_to_processing', $plugin_admin, 'approve_payment' );
     $this->loader->add_action( 'woocommerce_order_status_checking_payment_to_on-hold', $plugin_admin, 'cancel_payment' );
-
     $this->loader->add_filter( 'woocommerce_admin_order_actions', $plugin_admin, 'woocommerce_admin_order_actions', 10, 2 );
-
     $this->loader->add_filter( 'woocommerce_email_classes', $email, 'register_email', 90, 1 );
     $this->loader->add_action( 'woocommerce_email_actions', $email, 'add_woocommerce_email_actions' );
     $this->loader->add_action( 'wcp_email_payment_details', $email, 'payment_details', 10, 4 );

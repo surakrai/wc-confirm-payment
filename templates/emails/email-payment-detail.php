@@ -61,14 +61,16 @@ do_action( 'wcp_email_before_payment_details_table', $order, $sent_to_admin, $pl
       </tr>
       <tr>
         <th class="td" scope="row" style="text-align:<?php echo esc_attr( $text_align ); ?>; vertical-align:middle; font-family: 'Helvetica Neue', Helvetica, Roboto, Arial, sans-serif;"><?php _e( 'Transfer slip', 'woocommerce-confirm-payment' ) ?></th>
-        <td class="td" style="text-align:<?php echo esc_attr( $text_align ); ?>; vertical-align:middle; font-family: 'Helvetica Neue', Helvetica, Roboto, Arial, sans-serif;"><a href="<?php echo $slips ?>"><img src="<?php echo $slips_thumb; ?>"></a></td>
+        <td class="td" style="text-align:<?php echo esc_attr( $text_align ); ?>; vertical-align:middle; font-family: 'Helvetica Neue', Helvetica, Roboto, Arial, sans-serif;">
+          <?php echo ( $slips_thumb ? '<a href="' . $slips . '"><img src="'. $slips_thumb .'"></a>' : '-' ) ?>
+        </td>
       </tr>
     </tbody>
   </table>
   <?php if( $sent_to_admin ) : ?>
     <?php printf(
       '<a href="%s">%s</a>',
-        admin_url( 'edit.php?post_type=wcp_confirm_payment&action=-1&order_id=' . $order->get_id() ),
+        admin_url( 'edit.php?post_type=wcp_confirm_payment&action=-1&payment_id=' . $payment_id ),
         __( 'View details', 'woocommerce-confirm-payment' )
     ) ?>
 

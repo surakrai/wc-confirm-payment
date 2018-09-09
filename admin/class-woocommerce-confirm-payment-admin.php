@@ -277,7 +277,7 @@ class Woocommerce_Confirm_Payment_Admin {
         if ( has_post_thumbnail( $post_id ) ) {
           echo '<a target="_blank" href="'. get_the_post_thumbnail_url( $post_id, 'full' ) .'">' . get_the_post_thumbnail( $post_id, 'thumbnail') . '</a>';
         }else{
-          echo '<em>no slip</em>';
+          echo '-';
         }
       break;
 
@@ -342,6 +342,33 @@ class Woocommerce_Confirm_Payment_Admin {
       break;
     }
 
+  }
+
+  /**
+   * Adds the order pending confirm count to the menu.
+   */
+  public function menu_payment_count() {
+
+    global $submenu;
+
+    if ( isset( $submenu['edit.php?post_type=wcp_confirm_payment'] ) ) {
+
+      $counts = (array) wp_count_posts('wcp_confirm_payment');
+
+      $counts = isset( $counts['wcp-pending_confirm'] ) ? $counts['wcp-pending_confirm'] : 0;
+
+      if ( $counts ) {
+
+        foreach ( $submenu['edit.php?post_type=wcp_confirm_payment'] as $key => $menu_item ) {
+          if ( 0 === strpos( $menu_item[0], __( 'Confirm payment', 'woocommerce-confirm-payment' ) ) ) {
+            $submenu['edit.php?post_type=wcp_confirm_payment'][ $key ][0] .= ' <span class="awaiting-mod update-plugins count-' . esc_attr( $counts ) . '"><span class="pending_confirm-count">' . number_format_i18n( $counts ) . '</span></span>';
+            break;
+          }
+        }
+
+      }
+
+    }
   }
 
   //defining the filter that will be used so we can select posts by 'author'
