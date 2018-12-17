@@ -226,7 +226,7 @@ td.wcp_slip img{
   .post-type-wcp_confirm_payment .wp-list-table .is-expanded td:not(.hidden){
     overflow: visible;
   }
-  #the-list td{
+  .post-type-wcp_confirm_payment #the-list td{
     clear: both !important;
     display: block !important;
     width: auto!important;
